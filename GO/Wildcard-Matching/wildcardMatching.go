@@ -14,9 +14,9 @@ package wildcardMatching
 func isMatch(s string, p string) bool {
     si, pi, star, match := 0, 0, -1, 0
     for si < len(s) {
-        if pi < len(p) && (s[si] == p[pi] || string(p[pi]) == "?") {
+        if pi < len(p) && (s[si] == p[pi] || p[pi] == '?') {
             si, pi = si + 1, pi + 1
-        } else if pi < len(p) && string(p[pi]) == "*" {
+        } else if pi < len(p) && p[pi] == '*' {
             star, pi, match = pi, pi + 1, si
         } else if (star != -1) {
             pi, match, si = star + 1, match + 1, match +1
@@ -24,7 +24,7 @@ func isMatch(s string, p string) bool {
             return false
         }
     }
-    for pi < len(p) && string(p[pi]) == "*" { pi ++ }
+    for pi < len(p) && p[pi] == '*' { pi ++ }
     
     return pi == len(p)
     
