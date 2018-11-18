@@ -12,18 +12,22 @@ package permutationsII
 //   [2,1,1]
 // ]
 
-func permuteUnique(nums []int) [][]int {
-	n := len(nums)
-	res := make([][]int, 0)
-	record := make([]bool, n)
-	vector := make([]int, 0)
-	helper(nums, vector, record, &res)
-	return res
-}
+import (
+	"sort"
+)
 
 /**
 ** Solution1:
 **/
+// func permuteUnique(nums []int) [][]int {
+// 	n := len(nums)
+// 	res := make([][]int, 0)
+// 	record := make([]bool, n)
+// 	vector := make([]int, 0)
+// 	helper(nums, vector, record, &res)
+// 	return res
+// }
+
 // func helper(nums, vector []int, record []bool, res *[][]int) {
 //     curtLen, n := len(vector), len(nums)
 //     if curtLen == len(nums) {
@@ -50,6 +54,16 @@ func permuteUnique(nums []int) [][]int {
 /**
 ** Solution2:
 **/
+func permuteUnique(nums []int) [][]int {
+	n := len(nums)
+	res := make([][]int, 0)
+	record := make([]bool, n)
+	vector := make([]int, 0)
+	sort.Ints(nums)
+	helper(nums, vector, record, &res)
+	return res
+}
+
 func helper(nums, vector []int, record []bool, res *[][]int) {
 	curtLen, n := len(vector), len(nums)
 	if curtLen == len(nums) {
