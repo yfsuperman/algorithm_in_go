@@ -1,4 +1,4 @@
-Algorithm
+algorithm_in_go
 ----
 
-This repo is used for practising programming languanges like Java, Go, Python, etc. by implementing algorithms.
+This repo is used for practising golang by implementing different algorithm problems.
